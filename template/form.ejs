@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test ton niveau</title>
+    <link rel="stylesheet" href="/form.css">
+    <script type="module" src="/form.js"></script>
+</head>
+<body>
+    <header>
+        <h1>Bienvenue sur Test de niveau en un clic</h1>
+    </header>
+    
+    <main>
+        <div class="form-container">
+            <form method="post">
+                <% if(locals.scilab){ %>
+                    <div class="form-group">
+                    <label for="option1">qu'est ce que scilab?</label>
+                    <select id="option1" name="option1">
+                        <option value="Logiciel de calcule formel">Logiciel de calcule formel</option>
+                        <option value="logiciel de calcule numérique">logiciel de calcule numérique</option>
+                        <option value="Calculatrice arithmétique">Calculatrice arithmétique</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="option2"> Quelle est la commande pour tracer une courbe en Scilab?</label>
+                    <select id="option2" name="option2">
+                        <option value="suplot">subplot</option>
+                        <option value="linespace">linespace</option>
+                        <option value="plot">plot</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="option3">Scilab est un logiciel de:</label>
+                    <select id="option3" name="option3">
+                        <option value="modelisation">modelisation</option>
+                        <option value="montage vidéo">montage vidéo</option>
+                        <option value="imagerie">imagerie</option>
+                    </select>
+                </div>
+                <%  } %>
+                <% if(locals.latex){ %>
+                    <div class="form-group">
+                    <label for="option1">qu'est ce que latex?</label>
+                    <select id="option1" name="option1">
+                        <option value="Logiciel de calcule formel">Logiciel de calcule formel</option>
+                        <option value="système de préparation de documents">système de préparation de documents</option>
+                        <option value="Pas de réponse">Pas de réponse</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="option2"> Quelle est l'utilisation de latex </label>
+                    <select id="option2" name="option2">
+                        <option value="créer des images">créer des images</option>
+                        <option value="Pas de réponse">Pas de réponse</option>
+                        <option value="création de documents scientifiques et techniques">création de documents scientifiques et techniques</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="option3">Comment créer une section dans un document LaTeX ?</label>
+                    <select id="option3" name="option3">
+                        <option value="\begin{figure}">\begin{figure}</option>
+                        <option value="\section{Titre de la section}">\section{Titre de la section}</option>
+                        <option value="section{Titre de la section}">section{Titre de la section}</option>
+                    </select>
+                </div>
+                <%  } %>
+                <% if(locals.python){ %>
+                    <div class="form-group">
+                    <label for="option1">qu'est ce que python?</label>
+                    <select id="option1" name="option1">
+                        <option value="langage de programmation compilé">langage de programmation compilé</option>
+                        <option value="langage de programmation interprété">langage de programmation interprété</option>
+                        <option value="Calculatrice arithmétique">Calculatrice arithmétique</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="option2">quelles sont ses principales utilisations</label>
+                    <select id="option2" name="option2">
+                        <option value="développement web">développement web</option>
+                        <option value="programmation orientée Objet">programmation orientée</option>
+                        <option value="POO">POOO</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="option3">Comment définir une fonction en Python ?</label>
+                    <select id="option3" name="option3">
+                        <option value="def nom_fonction(parametre):">def nom_fonction(parametre):</option>
+                        <option value="def nom_fonction(parametre):return value">def nom_fonction(parametre):return value</option>
+                        <option value="pas de réponse">pas de réponse</option>
+                    </select>
+                </div>
+                <%  } %>
+                <% if(locals.c){ %>
+                    <div class="form-group">
+                    <label for="option1">qu'est ce que c++?</label>
+                    <select id="option1" name="option1">
+                        <option value="langage de programmation orienté objet">langage de programmation orienté objet</option>
+                        <option value="langage C">langage C</option>
+                        <option value="langage de programmation orienté objet, dérivé du langage C">langage de programmation orienté objet, dérivé du langage C</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="option2">quelles sont ses principales caractéristiques</label>
+                    <select id="option2" name="option2">
+                        <option value="Pas de réponse">Pas de réponse</option>
+                        <option value="Gestion de la mémoire">Gestion de la mémoire</option>
+                        <option value="Logiciel de calcule">Logiciel de calcule</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="option3">Comment créer une classe en C++ ?</label>
+                    <select id="option3" name="option3">
+                        <option value="class ClassName {}">class ClassName{}</option>
+                        <option value="class ClassName {};">class ClassName {};</option>
+                        <option value="class ClassName();">class ClassName();</option>
+                    </select>
+                </div>
+                <%  } %>
+                <button type="submit">Soumettre</button>
+            </form>
+        </div>
+    </main>
+    <% if(locals.compteur){ %>
+        <div class="compteur">Voici vos résultats</div>
+        <div class="container">
+            <div class="liste">
+                <h2>Mes réponses</h2>
+                <ol>
+                    <li><%= locals.listOption[0] %></li>
+                    <li><%= locals.listOption[1] %></li>
+                    <li><%= locals.listOption[2] %></li>
+                </ol>
+            </div>
+            <div class="liste">
+                <h2>Les résultats</h2>
+                <ol>
+                    <li><%= locals.data[0].reponse %></li>
+                    <li><%= locals.data[1].reponse %></li>
+                    <li><%= locals.data[2].reponse %></li>
+                </ol>
+            </div>
+        </div>
+        <div class="compteur">Vous avez donc <%= locals.compteur %> point(s)</div>
+    <% } %>
+    <a href="/">Retour</a>
+    <footer>
+        <p><h3>Test de niveau en un clic</h3></p>
+    </footer>
+</body>
+</html>
+
