@@ -36,7 +36,7 @@ export default async function handler(req, res) {
 
   // Définir les routes
   app.get("/", (request, reply) => {
-    reply.redirect('index.html');
+    return reply.redirect('index.html');
   });
 
   app.get('/python/test', async (request, reply) => {
@@ -70,6 +70,7 @@ export default async function handler(req, res) {
 
   // Gérer la requête
 try {
+    handler(req,res)
     const response = await app.routing(req, res);
     return response;
   } catch (error) {
