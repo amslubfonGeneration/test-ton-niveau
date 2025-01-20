@@ -19,6 +19,9 @@ app.register(fastifyStatic, {
 })
 app.register(fastifyFormbody)
 
+app.get("/",(req,res)=>{
+    res.redirect('index.html')
+})
 app.get('/python/test', async (req,res) =>{
     return res.view('template/form.ejs',{
         python:"python"
