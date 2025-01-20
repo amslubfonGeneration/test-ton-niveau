@@ -6,6 +6,7 @@ import ejs from 'ejs';
 import { join } from "node:path";
 import cors from "cors";
 import { c, latex, python, scilab } from "../src/action.js"; // Ajustez le chemin d'import
+import { rootDir } from "../src/conf.js";
 
 
 export default async function handler(req, res) {
@@ -29,7 +30,7 @@ export default async function handler(req, res) {
   });
 
   app.register(fastifyStatic, {
-    root: join(process.cwd(), 'public')
+    root: join(rootDir, 'public')
   });
 
   app.register(fastifyFormbody);
