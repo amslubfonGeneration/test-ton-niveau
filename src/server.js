@@ -9,7 +9,7 @@ import { rootDir } from "./conf.js"
 import { c, latex, python, scilab } from "./action.js"
 
 const corsConfig = {
-    origin: "*",
+    origin:['http://localhost:5173'],
     Credential: true,
     methods: ["GET", "POST", "PUT", "DELETE"]
 }
