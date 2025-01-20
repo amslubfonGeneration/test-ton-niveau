@@ -1,8 +1,9 @@
 import fastifyStatic from "@fastify/static";
 import fastifyView from "@fastify/view";
 import fastify from "fastify";
-import {join} from "node:path"
+import {dirname, join} from "node:path"
 import { fileURLToPath } from "node:url";
+import ejs from "ejs"
 
 
 export const rootDir = dirname(fileURLToPath(import.meta.url))
