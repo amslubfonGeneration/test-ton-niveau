@@ -35,38 +35,38 @@ export default async function handler(req, res) {
   app.register(fastifyFormbody);
 
   // Définir les routes
-  app.get("/", (request, reply) => {
+  app.get("/api", (request, reply) => {
     return reply.redirect('index.html');
   });
 
-  app.get('/python/test', async (request, reply) => {
+  app.get('/api/python/test', async (request, reply) => {
     return reply.view('template/form.ejs', {
       python: "python"
     });
   });
 
-  app.get('/latex/test', async (request, reply) => {
+  app.get('/api/latex/test', async (request, reply) => {
     return reply.view('template/form.ejs', {
       latex: "latex"
     });
   });
 
-  app.get('/scilab/test', async (request, reply) => {
+  app.get('/api/scilab/test', async (request, reply) => {
     return reply.view('template/form.ejs', {
       scilab: "scilab"
     });
   });
 
-  app.get('/c++/test', async (request, reply) => {
+  app.get('/api/c++/test', async (request, reply) => {
     return reply.view('template/form.ejs', {
       c: "c++"
     });
   });
 
-  app.post('/python/test', python);
-  app.post('/c++/test', c);
-  app.post('/scilab/test', scilab);
-  app.post('/latex/test', latex);
+  app.post('/api/python/test', python);
+  app.post('/api/c++/test', c);
+  app.post('/api/scilab/test', scilab);
+  app.post('/api/latex/test', latex);
 
   // Gérer la requête
 try {
@@ -81,7 +81,7 @@ try {
     });
 }
 }
-handler(req,res)
+
 
 
 
