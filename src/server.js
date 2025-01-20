@@ -4,12 +4,12 @@ import fastifyStatic from "@fastify/static"
 import fastifyView from "@fastify/view"
 import ejs from 'ejs'
 import { join } from "node:path"
-import {cors} from "cors"
+import cors from "cors"
 import { rootDir } from "./conf.js"
 import { c, latex, python, scilab } from "./action.js"
 
 const corsConfig = {
-    origin:['http://localhost:5173'],
+    origin:"*",
     Credential: true,
     methods: ["GET", "POST", "PUT", "DELETE"]
 }
@@ -23,8 +23,8 @@ app.register(fastifyStatic, {
     root:join(rootDir,'public')
 })
 app.register(fastifyFormbody)
-app.options("",cors(corsConfig))
-app.use(cors(corsConfig))
+app.options("/",cors(corsConfig))
+
 
 app.get("/",(req,res)=>{
     res.redirect('index.html')
