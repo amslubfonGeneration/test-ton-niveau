@@ -1,4 +1,4 @@
-import fastify  from "fastify"
+/*import fastify  from "fastify"
 import fastifyFormbody from "@fastify/formbody"
 import fastifyStatic from "@fastify/static"
 import fastifyView from "@fastify/view"
@@ -73,4 +73,4 @@ const start = async () => {
     }
 }
 start()
-
+*/
