@@ -70,7 +70,6 @@ export default async function handler(req, res) {
 
   // Gérer la requête
 try {
-    handler(req,res)
     const response = await app.routing(req, res);
     return response;
   } catch (error) {
@@ -82,6 +81,7 @@ try {
     });
 }
 }
+handler(req,res)
 
 
 
