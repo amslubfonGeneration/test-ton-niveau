@@ -21,12 +21,14 @@ app.register(fastifyStatic, {
 app.register(fastifyFormbody)
 
 
-export default async function fastifyfunction(app) {
-    app.get("/",(req,res)=>{
+export default async function handler(req, res) {
+
+   app.get("/",(req,res)=>{
         return res.redirect('index.html')
     })
+
     app.get('/python/test', async (req,res) =>{
-        return res.view('template/form.ejs',{
+    return res.view('template/form.ejs',{
             python:"python"
         })
     })
