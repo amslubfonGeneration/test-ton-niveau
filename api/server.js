@@ -5,8 +5,8 @@ import fastifyView from "@fastify/view"
 import ejs from 'ejs'
 import { join } from "node:path"
 import cors from "cors"
-import { rootDir } from "./conf.js"
-import { c, latex, python, scilab } from "./action.js"
+import { rootDir } from "../src/conf.js"
+import {c, scilab, python, latex} from "../src/action.js"
 
 
 const app = fastify()
