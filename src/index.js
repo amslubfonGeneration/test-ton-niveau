@@ -23,7 +23,7 @@ app.register(fastifyFormbody)
 
 export default async function fastifyfunction(app) {
     app.get("/",(req,res)=>{
-        res.redirect('index.html')
+        return res.redirect('index.html')
     })
     app.get('/python/test', async (req,res) =>{
         return res.view('template/form.ejs',{
