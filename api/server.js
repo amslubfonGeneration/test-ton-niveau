@@ -3,12 +3,11 @@ import fastifyFormbody from "@fastify/formbody"
 import fastifyStatic from "@fastify/static"
 import fastifyView from "@fastify/view"
 import ejs from 'ejs'
-import { join } from "node:path"
-import cors from "cors"
-import { rootDir } from "../src/conf.js"
+import { dirname, join } from "node:path"
 import {c, scilab, python, latex} from "../src/action.js"
 
 
+const rootDir = dirname(dirname(fileURLToPath(import.meta.url)))
 const app = fastify()
 app.register(fastifyView,{
     engine: {
@@ -23,7 +22,7 @@ app.register(fastifyFormbody)
 
 export default async function handler(req, res) {
 
-   app.get("/",(req,res)=>{
+    app.get("/",(req,res)=>{
         return res.redirect('index.html')
     })
 

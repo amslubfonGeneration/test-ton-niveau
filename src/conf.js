@@ -1,4 +1,4 @@
-import dotenv from 'dotenv'
+/*import dotenv from 'dotenv'
 import {fileURLToPath} from 'node:url'
 import {dirname, join} from 'node:path'
 
@@ -11,4 +11,4 @@ dotenv.config({
 })
 
 export const supabase_url = process.env.SUPABASE_URL
-export const supabase_key = process.env.SUPABASE_KEY
+export const supabase_key = process.env.SUPABASE_KEY*/
