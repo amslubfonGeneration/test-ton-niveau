@@ -11,7 +11,13 @@
     <header>
         <h1>Bienvenue sur Test de niveau en un clic</h1>
     </header>
-    
+    <% if(locals.compteur){ %>
+        <a href="#resultat">Voir les résultats</a>
+        <div class="shield">
+            <div class="score"><%= locals.compteur %></div>
+            <div class="label">Score de santé</div>
+        </div>
+    <% } %>
     <main>
         <div class="form-container">
             <form method="post">
@@ -124,26 +130,24 @@
         </div>
     </main>
     <% if(locals.compteur){ %>
-        <div class="compteur">Voici vos résultats</div>
-        <div class="container">
-            <div class="liste">
-                <h2>Mes réponses</h2>
-                <ol>
+        <h3 class="compteur" id="resultat">Voici vos résultats</h3>
+        <div class="list-container">
+            <h2>Mes réponses</h2>
+                <ul>
                     <li><%= locals.listOption[0] %></li>
                     <li><%= locals.listOption[1] %></li>
                     <li><%= locals.listOption[2] %></li>
-                </ol>
-            </div>
-            <div class="liste">
-                <h2>Les résultats</h2>
-                <ol>
+                </ul>
+        </div>
+        <div class="list-container">
+            <h2>Les résultats</h2>
+                <ul>
                     <li><%= locals.data[0].reponse %></li>
                     <li><%= locals.data[1].reponse %></li>
                     <li><%= locals.data[2].reponse %></li>
-                </ol>
-            </div>
+                </ul>
         </div>
-        <div class="compteur">Vous avez donc <%= locals.compteur %> point(s)</div>
+    </div>
     <% } %>
     <a href="/">Retour</a>
     <footer>
