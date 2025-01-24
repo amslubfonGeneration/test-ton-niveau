@@ -7,6 +7,7 @@ import { c, latex, python, scilab } from "./action.js"
 import { createClient } from "@supabase/supabase-js"
 import {fileURLToPath} from 'node:url'
 import {dirname, join} from 'node:path'
+const host = ("RENDER" in process.env) ? `0.0.0.0` : `localhost`;
 
 const app = fastify()
 
@@ -63,12 +64,9 @@ app.setErrorHandler((error,req,res) => {
     }
 })
 
-const start = async () => {
-        try{
-            await app.listen({port:10000})
-        }catch (err){
-            console.error(err)
-            process.exit(1)
-        }
-}
-start()
+app.listen({host: host, port: 3000 }, function (err, address) {
+  if (err) {
+    app.log.error(err)
+    process.exit(1)
+  }
+})
