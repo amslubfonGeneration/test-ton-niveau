@@ -65,7 +65,7 @@ app.setErrorHandler((error,req,res) => {
 
 const start = async () => {
         try{
-            await app.listen({port:8000})
+            await app.listen({port:10000})
         }catch (err){
             console.error(err)
             process.exit(1)
