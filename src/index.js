@@ -4,17 +4,12 @@ import fastifyStatic from "@fastify/static"
 import fastifyView from "@fastify/view"
 import ejs from 'ejs'
 import { c, latex, python, scilab } from "./action.js"
-import { createClient } from "@supabase/supabase-js"
-import {fileURLToPath} from 'node:url'
-import {dirname, join} from 'node:path'
+import {join} from 'node:path'
+import { rootDir } from "./conf.js"
 const host = ("RENDER" in process.env) ? `0.0.0.0` : `localhost`;
 
 const app = fastify()
 
-export const supabase = createClient("https://exspulecubopvnyxumww.supabase.co",
-"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImV4c3B1bGVjdWJvcHZueXh1bXd3Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3MzY5MzkyMTAsImV4cCI6MjA1MjUxNTIxMH0.6O2XROXycYI_dVsneOhy2qpwzYpYmDv0kt4xJylPF7c"
-)
-const rootDir = dirname(dirname(fileURLToPath(import.meta.url)))
 
 app.register(fastifyView,{
     engine: {

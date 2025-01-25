@@ -1,4 +1,4 @@
-import { supabase } from "./index.js"
+import { supabase } from "./database.js"
 
 
 export const python = async (req,res) =>{
