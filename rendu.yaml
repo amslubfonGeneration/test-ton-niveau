@@ -3,6 +3,6 @@ services:
    name:test-ton-niveau
    runtime: node
    plan: free
-   autoDeploy: false
+   autoDeploy: true
    buildCommand: npm install
    startCommand: "node src/index.js"
