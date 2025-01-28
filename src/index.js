@@ -3,13 +3,14 @@ import fastifyFormbody from "@fastify/formbody"
 import fastifyStatic from "@fastify/static"
 import fastifyView from "@fastify/view"
 import ejs from 'ejs'
-import {join} from 'node:path'
-import { rootDir } from "./conf.js"
+import {dirname, join} from 'node:path'
 import { clevel1, latexlevel1, pythonlevel1, scilablevel1 } from "./actionlevel1.js"
 import { clevel2, latexlevel2, pythonlevel2, scilablevel2 } from "./actionlevel2.js"
 import fastifyCookie from "@fastify/cookie"
+import { fileURLToPath } from "node:url"
 const host = ("RENDER" in process.env) ? `0.0.0.0` : `localhost`;
 
+export const rootDir = dirname(dirname(fileURLToPath(import.meta.url)))
 const app = fastify()
 
 
