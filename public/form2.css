@@ -1,0 +1,172 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'lobster', cursive;
+    font-size: 24px;
+    line-height: 1.5;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    background-color: #333;
+}
+
+header{
+    background-color: #3498db; /* Couleur attrayante */
+    color: white;
+    text-align: center;
+    padding: 20px 0;
+}
+
+main {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.form-container {
+    background-color:#ddd;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    width: 300px; /* Largeur du formulaire */
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+select {
+    background-color: white;
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+     font-family: 'lobster', cursive;
+    font-size: 21px;
+    line-height: 1.1;
+}
+
+
+button {
+    background-color: #3498db; /* Couleur de soumission */
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #2980b9; /* Couleur au survol */
+}
+
+footer {
+    background-color: #3498db; /* Même couleur que le header */
+    color: white;
+    text-align: center;
+    padding: 10px 0;
+}
+h2 {
+    color: white;
+}
+
+.compteur{
+    text-align: center;
+    color: white;
+}
+
+a{
+    text-decoration: none;
+    height: 90px;
+    width: 100px;
+    background-color: white;
+    border-radius: 3px;
+    text-align: center;
+    color: black;
+    padding-top: 4px;
+}
+.divider1 {
+        margin: auto;
+            width: 100%; /* Largeur personnalisable */
+            height: 6px; /* Épaisseur personnalisable */
+            background: linear-gradient(to right, 
+                tomato 0%, 
+                tomato 50%, 
+                #3498db 50%, 
+                #3498db 100%
+            );
+            border-radius: 3px; /* Coins arrondis optionnels */
+        }
+
+.divider2 {
+            margin: auto;
+            width: 100%; /* Largeur personnalisable */
+            height: 6px; /* Épaisseur personnalisable */
+            background: linear-gradient(to right, 
+                tomato 0%, 
+                tomato 50%, 
+                tomato 50%, 
+                tomato 100%
+            );
+            border-radius: 3px; /* Coins arrondis optionnels */
+        }
+
+h4{
+    color: white;
+}
+
+
+
+        .level-stars {
+            display: flex;
+            gap: 10px;
+            margin: auto;
+        }
+
+        .star {
+            background-color: #e0e0e0;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            width: 30px;
+            height: 30px;
+            position: relative;
+            clip-path: polygon(
+                50% 0%, 
+                61% 35%, 
+                98% 35%, 
+                68% 57%, 
+                79% 91%, 
+                50% 70%, 
+                21% 91%, 
+                32% 57%, 
+                2% 35%, 
+                39% 35%
+            );
+            transition: all 0.3s ease;
+        }
+
+        .star:hover {
+            transform: scale(1.1);
+        }
+
+        .empthy{
+            background-color: #e0e0e0;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .filled{
+            background-color:yellow;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }

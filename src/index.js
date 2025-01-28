@@ -3,9 +3,11 @@ import fastifyFormbody from "@fastify/formbody"
 import fastifyStatic from "@fastify/static"
 import fastifyView from "@fastify/view"
 import ejs from 'ejs'
-import { c, latex, python, scilab } from "./action.js"
 import {join} from 'node:path'
 import { rootDir } from "./conf.js"
+import { clevel1, latexlevel1, pythonlevel1, scilablevel1 } from "./actionlevel1.js"
+import { clevel2, latexlevel2, pythonlevel2, scilablevel2 } from "./actionlevel2.js"
+import fastifyCookie from "@fastify/cookie"
 const host = ("RENDER" in process.env) ? `0.0.0.0` : `localhost`;
 
 const app = fastify()
@@ -20,35 +22,43 @@ app.register(fastifyStatic, {
     root:join(rootDir,'public')
 })
 app.register(fastifyFormbody)
+app.register(fastifyCookie)
 
 app.get("/",(req,res)=>{
     return res.redirect('index.html')
 })
-app.get('/python/test', async (req,res) =>{
-    return res.view('template/form.ejs',{
-        python:"python"
+app.get('/python/level1', async (req,res) =>{
+    return res.view('template/level1.ejs',{
+        python:"pythonlevel1"
     })
 })
-app.get('/latex/test', async (req,res) =>{
-    return res.view('template/form.ejs',{
-        latex:"latex"
+app.get('/latex/level1', async (req,res) =>{
+    return res.view('template/level1.ejs',{
+        latex:"latexlevel1"
     })
 })
-app.get('/scilab/test', async (req,res) =>{
-    return res.view('template/form.ejs',{
-        scilab:"scilab"
+app.get('/scilab/level1', async (req,res) =>{
+    return res.view('template/level1.ejs',{
+        scilab:"scilablevel1"
     })
 })
-app.get('/c++/test', async (req,res) =>{
-    return res.view('template/form.ejs',{
-        c:"c++"
+app.get('/c++/level1', async (req,res) =>{
+    return res.view('template/level1.ejs',{
+        c:"c++level1"
     })
 })
 
-app.post('/python/test', python)
-app.post('/c++/test', c)
-app.post('/scilab/test', scilab)
-app.post('/latex/test', latex)
+
+
+app.post('/python/level1', pythonlevel1)
+app.post('/c++/level1', clevel1)
+app.post('/scilab/level1', scilablevel1)
+app.post('/latex/level1', latexlevel1)
+
+app.post('/python/level2', pythonlevel2)
+app.post('/c++/level2', clevel2)
+app.post('/scilab/level2', scilablevel2)
+app.post('/latex/level2', latexlevel2)
 
 
 app.setErrorHandler((error,req,res) => {

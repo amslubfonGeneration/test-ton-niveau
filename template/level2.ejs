@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test ton niveau level2</title>
+    <link rel="stylesheet" href="/form1.css">
+    <link rel="stylesheet" href="/form2.css">
+    <script type="module" src="/form1.js"></script>
+    <script type="module" src="/form2.js"></script>
+</head>
+<body>
+    <header>
+        <h1>Bienvenue sur Test de niveau en un clic</h1>
+    </header>
+     <div id="myModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <% if(locals.level1){ %>
+                <p>Vous avez franchir Level1 avec <%= locals.level1 %>points.
+                Continuer avec level2</p>
+            <% } %>
+            <% if(!locals.level1){ %>
+                <p>Vous avez franchir Level2 avec <%= locals.level2 %>points.
+                Consulter vos résultats en cliquant sur le boutton a gauche.</p>
+            <% } %>
+            <% if(locals.compteur === 6){ %>
+                <p>Félicitation. Vous avez atteint les 6 points</p>
+            <% } %>
+        </div>
+    </div>
+    <h2 class="divider2">level2</h2>
+    <% if(locals.compteur){ %>
+        <a href="#resultat">Voir les résultats</a>
+        <div class="shield">
+            <div class="score"><%= locals.compteur %></div>
+            <div class="label">Votre Score</div>
+        </div>
+        <div class="level-stars">
+            <% if( locals.compteur === 2 || locals.compteur === 3){ %>
+                <div class="star filled"></div>
+                <div class="star empthy"></div>
+                <div class="star empthy"></div>
+            <% } %>
+            <% if(locals.compteur === 4 || locals.compteur === 5){ %>
+                <div class="star filled"></div>
+                <div class="star filled"></div>
+                <div class="star empthy"></div>
+            <% } %>
+            <% if(locals.compteur === 6){ %>
+                <div class="star filled"></div>
+                <div class="star filled"></div>
+                <div class="star filled"></div>
+            <% } %>
+        </div>
+        <% } %>
+    <main>
+        
+        <div class="form-container">
+            
+                <% if(locals.scilab){ %>
+
+                <form method="post" action="/scilab/level2">
+                    <div class="form-group">
+                    <label for="option1">Pourquoi scilab est t'il principalement utilisé?</label>
+                    <select id="option1" name="option1">
+                        <option value="Développement de jeux">Développement de jeux</option>
+                        <option value="calculs scientifique et mathématique">calculs scientifique et mathématique</option>
+                        <option value="Calculatrice arithmétique">Calculatrice arithmétique</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="option2"> Quel est le langage parent de Scilab?</label>
+                    <select id="option2" name="option2">
+                        <option value="Java">Java</option>
+                        <option value="Matlab">Matlab</option>
+                        <option value="Python">Python</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="option3">Comment définit t-on une matrice en Scilab?</label>
+                    <select id="option3" name="option3">
+                        <option value="list(1,2,3)">list(1,2,3)</option>
+                        <option value="matrix(1,2,3)">matrix(1,2,3)</option>
+                        <option value="[1,2,3]">[1,2,3]</option>
+                    </select>
+                </div>
+                <button type="submit">Soumettre</button>
+                </form>
+                <%  } %>
+                <% if(locals.latex){ %>
+                <form method="post" action="/latex/level2">
+                    <div class="form-group">
+                    <label for="option1">Comment écrit on équation mathématique en LaTeX?</label>
+                    <select id="option1" name="option1">
+                        <option value="$equation$">$equation$</option>
+                        <option value="\$...\$">\$...\$</option>
+                        <option value="begin\{equation\}">begin\{equation\}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="option2"> Quelle est le format de sortie principal de LaTeX?</label>
+                    <select id="option2" name="option2">
+                        <option value="HTML">HTML</option>
+                        <option value="PDF">PDF</option>
+                        <option value="TXT">TXT</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="option3">LaTeX gére t'il le format beamer?</label>
+                    <select id="option3" name="option3">
+                        <option value="Oui et Non">Oui et Non</option>
+                        <option value="Oui">Oui</option>
+                        <option value="Non">Non</option>
+                    </select>
+                </div>
+                <button type="submit">Soumettre</button>
+            </form>
+                <%  } %>
+                <% if(locals.python){ %>
+                    <form method="post" action="/python/level2">
+                    <div class="form-group">
+                    <label for="option1">Quelle est la principale caractéristique de python?</label>
+                    <select id="option1" name="option1">
+                        <option value="Compilation rapide">Compilation rapide</option>
+                        <option value="Gestion manuelle de la mémoire">Gestion manuelle de la mémoire</option>
+                        <option value="Synthaxe simple et lisible">Synthaxe simple et lisible</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="option2">quelle bibliotheque Python est célebre pour le traitement de données </label>
+                    <select id="option2" name="option2">
+                        <option value="OpenGL">OpenGL</option>
+                        <option value="Pandas">Pandas</option>
+                        <option value="Boost">Boost</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="option3">Quelle mot clé est utilisé pour définir une fonction en Python ?</label>
+                    <select id="option3" name="option3">
+                        <option value="function">function</option>
+                        <option value="def">def</option>
+                        <option value="methode">methode</option>
+                    </select>
+                </div>
+                <button type="submit">Soumettre</button>
+            </form>
+                <%  } %>
+                <% if(locals.c){ %>
+                <form method="post" action="/c++/level2">
+                    <div class="form-group">
+                    <label for="option1">Quelle est la particularité de la gestion mémoire en c++?</label>
+                    <select id="option1" name="option1">
+                        <option value="Garbage collection automatique">Garbage collection automatique</option>
+                        <option value="Allocation dynamique manuelle">Allocation dynamique manuelle</option>
+                        <option value="Mémoire illimitée">Mémoire illimitée</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="option2">quel concept est specifique?</label>
+                    <select id="option2" name="option2">
+                        <option value="Typage dynamique">Typage dynamique</option>
+                        <option value="Classes et héritage">Classes et héritage</option>
+                        <option value="interprétation dynamique">interprétation dynamique</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="option3">Comment déclare t-on un pointer en c++</label>
+                    <select id="option3" name="option3">
+                        <option value="pointer x">pointer x</option>
+                        <option value="x->pointer">x->pointer</option>
+                        <option value="*x">*x</option>
+                    </select>
+                </div>
+                <button type="submit">Soumettre</button>
+                <%  } %>
+            </form>
+        </div>
+    </main>
+    <% if(locals.compteur){ %>
+        <h3 class="compteur" id="resultat">Voici vos résultats</h3>
+        <div class="list-container">
+            <h2>Level1</h2>
+            <h4>Mes réponses</h4>
+                <ul>
+                    <li><%= locals.listOption1[0] %></li>
+                    <li><%= locals.listOption1[1] %></li>
+                    <li><%= locals.listOption1[2] %></li>
+                </ul>
+        </div>
+        <div class="list-container">
+            <h4>Les résultats</h4>
+                <ul>
+                    <li><%= locals.extracteEle1[0].reponse %></li>
+                    <li><%= locals.extracteEle1[1].reponse %></li>
+                    <li><%= locals.extracteEle1[2].reponse %></li>
+                </ul>
+        </div>
+            <h2>Level2</h2>
+            <h4>Mes réponses</h4>
+                <ul>
+                    <li><%= locals.listOption2[0] %></li>
+                    <li><%= locals.listOption2[1] %></li>
+                    <li><%= locals.listOption2[2] %></li>
+                </ul>
+        </div>
+        <div class="list-container">
+            <h4>Les résultats</h4>
+                <ul>
+                    <li><%= locals.extracteEle2[0].reponse %></li>
+                    <li><%= locals.extracteEle2[1].reponse %></li>
+                    <li><%= locals.extracteEle2[2].reponse %></li>
+                </ul>
+        </div>
+    </div>
+    <% } %>
+    <a href="/">Retour</a>
+    <footer>
+        <p><h3>Test de niveau en un clic</h3></p>
+    </footer>
+</body>
+</html>
