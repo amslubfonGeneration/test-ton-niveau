@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Email_message</title>
+    <link rel="stylesheet" href="/index.css">
+    <link rel="stylesheet" href="/form1.css">
+    <link rel="stylesheet" href="/form2.css">
+    <script type="module" src="/form1.js"></script>
+    <script type="module" src="/form2.js"></script>
+    <style>
+        .form-container{
+            margin: auto;
+        }
+        input{
+            height: 50px;
+            width: 100%;
+        }
+        .rel{
+            height: 50px;
+        }
+    </style>
+</head>
+<body>
+    <% if(locals.mailerror){ %>
+         <div id="myModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <p><%= locals.mailerror %></p>
+        </div>
+    </div>
+    <% } %>
+    <% if(locals.message){ %>
+         <div id="myModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <p><%= locals.message %></p>
+        </div>
+    </div>
+    <% } %>
+    <div class="form-container">
+            <form method="post">
+                    <div class="form-group">
+                        <label for="Contact">Contact/Email</label>
+                        <input type="text" name="contact">
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Votre message.</label>
+                        <input type="text" name="message" >
+                    </div>
+                    <button type="submit">Envoyer</button>
+            </form>
+        </div>
+        <a href="/" class="rel">Retour</a>
+</body>
+</html>

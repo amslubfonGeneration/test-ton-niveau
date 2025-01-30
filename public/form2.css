@@ -104,7 +104,7 @@ a{
             width: 100%; /* Largeur personnalisable */
             height: 6px; /* Épaisseur personnalisable */
             background: linear-gradient(to right, 
-                tomato 0%, 
+                rgb(126, 115, 113) 0%, 
                 tomato 50%, 
                 #3498db 50%, 
                 #3498db 100%

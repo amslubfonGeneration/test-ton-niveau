@@ -21,7 +21,7 @@
                 Continuer avec level2</p>
             <% } %>
             <% if(!locals.level1){ %>
-                <p>Vous avez franchir Level2 avec <%= locals.level2 %>points.
+                <p>Partie Terminer avec <%= locals.compteur %>points.
                 Consulter vos résultats en cliquant sur le boutton a gauche.</p>
             <% } %>
             <% if(locals.compteur === 6){ %>
@@ -180,7 +180,7 @@
     <% if(locals.compteur){ %>
         <h3 class="compteur" id="resultat">Voici vos résultats</h3>
         <div class="list-container">
-            <h2>Level1</h2>
+            <h2>Level1 (<%= locals.compteur - locals.level2  %> points)</h2>
             <h4>Mes réponses</h4>
                 <ul>
                     <li><%= locals.listOption1[0] %></li>
@@ -196,7 +196,7 @@
                     <li><%= locals.extracteEle1[2].reponse %></li>
                 </ul>
         </div>
-            <h2>Level2</h2>
+            <h2>Level2 (<%= locals.level2 %> points)</h2>
             <h4>Mes réponses</h4>
                 <ul>
                     <li><%= locals.listOption2[0] %></li>
