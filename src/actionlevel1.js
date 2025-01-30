@@ -47,7 +47,8 @@ export const pythonlevel1 = async (req,res) =>{
             })
             return res.view('template/level2.ejs',{
                 python:"python",
-                level1:compteur
+                level1:compteur,
+                affiche: "affiche"
             })
         }
         
@@ -96,7 +97,8 @@ export const clevel1 = async (req,res) =>{
             })
             return res.view('template/level2.ejs',{
                 c:"c++",
-                level1:compteur
+                level1:compteur,
+                affiche: "affiche"
         })
         }
         
@@ -145,7 +147,8 @@ export const latexlevel1 = async (req,res) =>{
             })
             return res.view('template/level2.ejs',{
                 latex:"latex",
-                level1:compteur
+                level1:compteur,
+                affiche: "affiche"
             })
         }
 }
@@ -194,7 +197,8 @@ export const scilablevel1 = async (req,res) =>{
             })
             return res.view('template/level2.ejs',{
                 scilab:"scilab",
-                level1:compteur
+                level1:compteur,
+                affiche: "affiche"
             })
         }
 }

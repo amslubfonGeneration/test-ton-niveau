@@ -34,26 +34,31 @@ app.get("/contacter_nous",(req,res)=>{
 })
 app.get('/python/level1', async (req,res) =>{
     return res.view('template/level1.ejs',{
-        python:"pythonlevel1"
+        python:"pythonlevel1",
+        affiche: "affiche"
     })
 })
 app.get('/latex/level1', async (req,res) =>{
     return res.view('template/level1.ejs',{
-        latex:"latexlevel1"
+        latex:"latexlevel1",
+        affiche: "affiche"
     })
 })
 app.get('/scilab/level1', async (req,res) =>{
     return res.view('template/level1.ejs',{
-        scilab:"scilablevel1"
+        scilab:"scilablevel1",
+        affiche: "affiche"
     })
 })
 app.get('/c++/level1', async (req,res) =>{
     return res.view('template/level1.ejs',{
-        c:"c++level1"
+        c:"c++level1",
+        affiche: "affiche"
     })
 })
-
-
+app.get('/statistique', async (req,res) =>{
+    return res.view('template/statistic.ejs')
+})
 
 
 app.post('/python/level1', pythonlevel1)
@@ -75,7 +80,7 @@ app.setErrorHandler((error,req,res) => {
     }
 })
 
-app.listen({host: host, port: 3000 }, function (err, address) {
+app.listen({host: host, port: 8000 }, function (err, address) {
   if (err) {
     app.log.error(err)
     process.exit(1)

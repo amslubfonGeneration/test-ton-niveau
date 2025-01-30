@@ -43,6 +43,7 @@
             <div class="star empthy"></div>
         </div>
     <% } %>
+    <% if(locals.affiche){ %>
     <main>
         <div class="form-container">
             <form method="post">
@@ -154,6 +155,7 @@
             </form>
         </div>
     </main>
+    <% } %>
     <% if(locals.compteur){ %>
         <h3 class="compteur" id="resultat">Voici vos résultats</h3>
         <div class="list-container">

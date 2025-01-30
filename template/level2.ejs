@@ -21,11 +21,12 @@
                 Continuer avec level2</p>
             <% } %>
             <% if(!locals.level1){ %>
-                <p>Partie Terminer avec <%= locals.compteur %>points.
+                <p>La Partie Terminer.
+                Score: <%= locals.compteur %>points.
                 Consulter vos résultats en cliquant sur le boutton a gauche.</p>
             <% } %>
             <% if(locals.compteur === 6){ %>
-                <p>Félicitation. Vous avez atteint les 6 points</p>
+                <p>Félicitation.Niveau excellent</p>
             <% } %>
         </div>
     </div>
@@ -54,6 +55,7 @@
             <% } %>
         </div>
         <% } %>
+    <% if(locals.affiche){ %>
     <main>
         
         <div class="form-container">
@@ -177,6 +179,7 @@
             </form>
         </div>
     </main>
+    <% } %>
     <% if(locals.compteur){ %>
         <h3 class="compteur" id="resultat">Voici vos résultats</h3>
         <div class="list-container">
