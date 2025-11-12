@@ -3,56 +3,597 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Test de niveau</title>
-    <link rel="stylesheet" href="index.css">
-    <script type="module" src="index.js"></script>
+    <title>Révision Mots Anglais/Français</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
-    .contact{
-        text-decoration: none;
-        text-align: center;
-        color:white;
-        display: inline-block;
-        margin-left: 13px;
-    }
-    .contact:hover{
-        background-color:aliceblue;
-        border-radius: 5px;
-        color: black;
-        padding-left: 3px;
-        padding-right: 3px;
-    }
-
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(rgba(106, 17, 203, 0.85), rgba(37, 117, 252, 0.85)), 
+                        url('https://images.unsplash.com/photo-1523580494863-6f3031224c94?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80') no-repeat center center fixed;
+            background-size: cover;
+            color: white;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 10px;
+        }
+        
+        .tagline {
+            font-size: 1.5rem;
+            font-weight: 500;
+            margin-top: 10px;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+            max-width: 600px;
+            line-height: 1.4;
+        }
+        
+        .container {
+            max-width: 800px;
+            width: 100%;
+            background-color: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            margin-top: 20px;
+        }
+        
+        h1 {
+            text-align: center;
+            margin-bottom: 10px;
+            font-size: 2.5rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            font-weight: 700;
+        }
+        
+        .section {
+            margin-bottom: 30px;
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.15);
+            border-radius: 15px;
+        }
+        
+        h2 {
+            margin-bottom: 15px;
+            font-size: 1.5rem;
+            border-bottom: 2px solid rgba(255, 255, 255, 0.3);
+            padding-bottom: 10px;
+            font-weight: 600;
+        }
+        
+        .word-input {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+        
+        input {
+            padding: 12px 15px;
+            border: none;
+            border-radius: 10px;
+            font-size: 1rem;
+            background-color: rgba(255, 255, 255, 0.9);
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        button {
+            padding: 12px 25px;
+            border: none;
+            border-radius: 10px;
+            background-color: #4CAF50;
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 1rem;
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        button:hover {
+            background-color: #45a049;
+            transform: translateY(-2px);
+        }
+        
+        button:disabled {
+            background-color: #cccccc;
+            cursor: not-allowed;
+            transform: none;
+        }
+        
+        .word-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            gap: 10px;
+            margin-top: 15px;
+        }
+        
+        .word-item {
+            background-color: rgba(255, 255, 255, 0.2);
+            padding: 10px;
+            border-radius: 8px;
+            text-align: center;
+            position: relative;
+        }
+        
+        .remove-word {
+            position: absolute;
+            top: -5px;
+            right: -5px;
+            background-color: #f44336;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            font-size: 12px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .review-section {
+            text-align: center;
+        }
+        
+        .timer-display {
+            font-size: 4rem;
+            font-weight: bold;
+            margin: 20px 0;
+            color: #FFD700;
+            text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        .word-display {
+            font-size: 3rem;
+            margin: 30px 0;
+            min-height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+        }
+        
+        .result-message {
+            font-size: 2rem;
+            margin: 20px 0;
+            min-height: 60px;
+        }
+        
+        .controls {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 20px;
+            flex-wrap: wrap;
+        }
+        
+        .success {
+            color: #4CAF50;
+        }
+        
+        .failure {
+            color: #f44336;
+        }
+        
+        .progress-bar {
+            height: 10px;
+            background-color: rgba(255, 255, 255, 0.2);
+            border-radius: 5px;
+            margin: 20px 0;
+            overflow: hidden;
+        }
+        
+        .progress {
+            height: 100%;
+            background-color: #4CAF50;
+            width: 0%;
+            transition: width 0.3s ease;
+        }
+        
+        .score-display {
+            display: flex;
+            justify-content: space-between;
+            margin: 15px 0;
+            font-size: 1.2rem;
+            font-weight: 500;
+        }
+        
+        .score-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .score-value {
+            font-size: 2rem;
+            font-weight: 700;
+        }
+        
+        .know-button {
+            background-color: #4CAF50;
+        }
+        
+        .dont-know-button {
+            background-color: #f44336;
+        }
+        
+        .pause-button {
+            background-color: #FF9800;
+        }
+        
+        .timer-options {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin: 15px 0;
+        }
+        
+        .timer-option {
+            padding: 8px 15px;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-radius: 8px;
+            background-color: transparent;
+            color: white;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .timer-option.active {
+            background-color: rgba(255, 255, 255, 0.2);
+            border-color: #FFD700;
+        }
+        
+        .timer-paused {
+            animation: pulse 1.5s infinite;
+        }
+        
+        .score-comment {
+            font-size: 1.5rem;
+            margin-top: 10px;
+            font-weight: 500;
+            opacity: 0.9;
+        }
+        
+        @keyframes pulse {
+            0% { opacity: 1; }
+            50% { opacity: 0.5; }
+            100% { opacity: 1; }
+        }
+        
+        @media (max-width: 600px) {
+            .container {
+                padding: 15px;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .tagline {
+                font-size: 1.2rem;
+            }
+            
+            .word-display {
+                font-size: 2.5rem;
+            }
+            
+            .timer-display {
+                font-size: 3rem;
+            }
+            
+            .controls {
+                flex-direction: column;
+            }
+            
+            .score-display {
+                flex-direction: column;
+                gap: 10px;
+            }
+            
+            .timer-options {
+                flex-wrap: wrap;
+            }
+            
+            .score-comment {
+                font-size: 1.2rem;
+            }
+        }
     </style>
 </head>
 <body>
-    <header>
-        <h1>Test ton niveau en un clic</h1>
-    </header>
-    
-    <main>
-        <div class="hamburger" id="hamburger">
-            <div class="bar"></div>
-            <div class="bar"></div>
-            <div class="bar"></div>
-        </div>
-
-        <div class="logo-container">
-            <a href="/python/level1"><img src="im1.jpg" alt="Logo 1" class="logo"></a>
-            <div class="middle-logos">
-                <a href="/c++/level1"><img src="im2.jpg" alt="Logo 2" class="logo"></a>
-                <a href="/scilab/level1"><img src="im3.jpg" alt="Logo 2" class="logo"></a>
-            </div>
-            <a href="/latex/level1"><img src="im4.jpg" alt="Logo 2" class="logo"></a>
-        </div>
-    </main>
-    <div>
-        <a href="/contacter_nous" class="contact">Contacter nous</a>
-        <a href="/statistique" class="contact">Les Statistiques</a>
+    <div class="header">
+        <h1>Revision words English/ French</h1>
+        <p class="tagline">(Let's learn english and french with sœurs missionnaires)</p>
     </div>
     
-    <footer>
-        <h3>Test de niveau en un clic</h3>
-    </footer>
+    <div class="container">
+        <div class="section">
+            <h2>Add new word/phrase</h2>
+            <div class="word-input">
+                <input type="text" id="new-word" placeholder="English/French">
+                <button id="add-word">Add</button>
+            </div>
+            <div class="word-list" id="word-list">
+                <!-- Les mots ajoutés apparaîtront ici -->
+            </div>
+        </div>
+        
+        <div class="section review-section">
+            <h2>Revision with timer</h2>
+            <div class="score-display">
+                <div class="score-item">
+                    <div>Score</div>
+                    <div class="score-value" id="score">0</div>
+                </div>
+                <div class="score-item">
+                    <div>Successfuls</div>
+                    <div class="score-value" id="success-count">0</div>
+                </div>
+                <div class="score-item">
+                    <div>Failures</div>
+                    <div class="score-value" id="failure-count">0</div>
+                </div>
+            </div>
+            <div class="timer-options">
+                <button class="timer-option active" data-time="5">5 seconds</button>
+                <button class="timer-option" data-time="7">7 seconds</button>
+                <button class="timer-option" data-time="10">10 seconds</button>
+            </div>
+            <div class="progress-bar">
+                <div class="progress" id="progress"></div>
+            </div>
+            <div class="word-display" id="current-word"></div>
+            <div class="timer-display" id="timer">5</div>
+            <div class="result-message" id="result"></div>
+            <div id="score-comment" class="score-comment"></div>
+            <div class="controls">
+                <button id="start-review">Begin Revision</button>
+                <button id="pause-resume" class="pause-button" disabled>Pause</button>
+                <button id="know-button" class="know-button" disabled>I know</button>
+                <button id="dont-know-button" class="dont-know-button" disabled>I don't know</button>
+            </div>
+        </div>
+    </div>
 
-</body>
-</html>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Éléments du DOM
+            const newWordInput = document.getElementById('new-word');
+            const addWordButton = document.getElementById('add-word');
+            const wordList = document.getElementById('word-list');
+            const startReviewButton = document.getElementById('start-review');
+            const pauseResumeButton = document.getElementById('pause-resume');
+            const knowButton = document.getElementById('know-button');
+            const dontKnowButton = document.getElementById('dont-know-button');
+            const currentWordDisplay = document.getElementById('current-word');
+            const timerDisplay = document.getElementById('timer');
+            const resultDisplay = document.getElementById('result');
+            const scoreCommentDisplay = document.getElementById('score-comment');
+            const progressBar = document.getElementById('progress');
+            const scoreDisplay = document.getElementById('score');
+            const successCountDisplay = document.getElementById('success-count');
+            const failureCountDisplay = document.getElementById('failure-count');
+            const timerOptions = document.querySelectorAll('.timer-option');
+            
+            // Variables d'état
+            let words = JSON.parse(localStorage.getItem('englishWords')) || [];
+            let currentWordIndex = 0;
+            let timer;
+            let timeLeft = 5;
+            let selectedTime = 5;
+            let isReviewActive = false;
+            let isPaused = false;
+            let score = 0;
+            let successCount = 0;
+            let failureCount = 0;
+            
+            // Initialiser l'affichage des mots
+            updateWordList();
+            
+            // Événements
+            addWordButton.addEventListener('click', addWord);
+            newWordInput.addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    addWord();
+                }
+            });
+            
+            startReviewButton.addEventListener('click', startReview);
+            pauseResumeButton.addEventListener('click', togglePause);
+            knowButton.addEventListener('click', function() {
+                handleAnswer(true);
+            });
+            dontKnowButton.addEventListener('click', function() {
+                handleAnswer(false);
+            });
+            
+            // Configuration des options de temps
+            timerOptions.forEach(option => {
+                option.addEventListener('click', function() {
+                    timerOptions.forEach(opt => opt.classList.remove('active'));
+                    this.classList.add('active');
+                    selectedTime = parseInt(this.getAttribute('data-time'));
+                    timerDisplay.textContent = selectedTime;
+                    
+                    // Mettre à jour timeLeft si la révision n'est pas active
+                    if (!isReviewActive) {
+                        timeLeft = selectedTime;
+                        timerDisplay.textContent = timeLeft;
+                    }
+                });
+            });
+            
+            // Fonctions
+            function addWord() {
+                const word = newWordInput.value.trim().toLowerCase();
+                
+                if (word && !words.includes(word)) {
+                    words.push(word);
+                    localStorage.setItem('englishWords', JSON.stringify(words));
+                    updateWordList();
+                    newWordInput.value = '';
+                    newWordInput.focus();
+                }
+            }
+            
+            function updateWordList() {
+                wordList.innerHTML = '';
+                
+                words.forEach((word, index) => {
+                    const wordItem = document.createElement('div');
+                    wordItem.className = 'word-item';
+                    wordItem.textContent = word;
+                    
+                    const removeButton = document.createElement('button');
+                    removeButton.className = 'remove-word';
+                    removeButton.textContent = '×';
+                    removeButton.addEventListener('click', function() {
+                        words.splice(index, 1);
+                        localStorage.setItem('englishWords', JSON.stringify(words));
+                        updateWordList();
+                    });
+                    
+                    wordItem.appendChild(removeButton);
+                    wordList.appendChild(wordItem);
+                });
+            }
+            
+            function startReview() {
+                if (words.length === 0) {
+                    alert("Veuillez d'abord ajouter des mots à réviser.");
+                    return;
+                }
+                
+                isReviewActive = true;
+                isPaused = false;
+                currentWordIndex = 0;
+                score = 0;
+                successCount = 0;
+                failureCount = 0;
+                updateScoreDisplay();
+                scoreCommentDisplay.textContent = '';
+                
+                startReviewButton.disabled = true;
+                pauseResumeButton.disabled = false;
+                pauseResumeButton.textContent = "Pause";
+                knowButton.disabled = false;
+                dontKnowButton.disabled = false;
+                
+                showCurrentWord();
+                startTimer();
+            }
+            
+            function togglePause() {
+                if (!isReviewActive) return;
+                
+                isPaused = !isPaused;
+                
+                if (isPaused) {
+                    clearInterval(timer);
+                    pauseResumeButton.textContent = "Reprendre";
+                    timerDisplay.classList.add('timer-paused');
+                    knowButton.disabled = true;
+                    dontKnowButton.disabled = true;
+                } else {
+                    pauseResumeButton.textContent = "Pause";
+                    timerDisplay.classList.remove('timer-paused');
+                    knowButton.disabled = false;
+                    dontKnowButton.disabled = false;
+                    startTimer();
+                }
+            }
+            
+            function showCurrentWord() {
+                if (currentWordIndex < words.length) {
+                    currentWordDisplay.textContent = words[currentWordIndex];
+                    resultDisplay.textContent = '';
+                    resultDisplay.className = 'result-message';
+                    scoreCommentDisplay.textContent = '';
+                    updateProgressBar();
+                    
+                    // Réinitialiser l'état de pause
+                    isPaused = false;
+                    pauseResumeButton.textContent = "Pause";
+                    timerDisplay.classList.remove('timer-paused');
+                } else {
+                    endReview();
+                }
+            }
+            
+            function handleAnswer(isKnown) {
+                if (!isReviewActive || isPaused) return;
+                
+                clearInterval(timer);
+                
+                if (isKnown) {
+                    score += 10;
+                    successCount++;
+                    resultDisplay.textContent = "Bravo!";
+                    resultDisplay.className = 'result-message success';
+                } else {
+                    failureCount++;
+                    resultDisplay.textContent = "Dommage!";
+                    resultDisplay.className = 'result-message failure';
+                }
+                
+                updateScoreDisplay();
+                
+                currentWordIndex++;
+                
+                if (currentWordIndex < words.length) {
+                    setTimeout(() => {
+                        showCurrentWord();
+                        startTimer();
+                    }, 1500);
+                } else {
+                    setTimeout(endReview, 1500);
+                }
+            }
+            
+            function startTimer() {
+                if (isPaused) return;
+                
+                timeLeft = selectedTime;
+                timerDisplay.textContent = timeLeft;
+                
+                timer = setInterval(() => {
+                    if (isPaused) return;
+                    
+                    timeLeft--;
+                    timerDisplay.textContent = timeLeft;
+                    
+                    if (timeLeft <= 0) {
+                        clearInterval(timer);
+                        // Temps écoulé = échec
+                        handleAnswer(false);
+                    }
+                }, 1000);
+            }
+            
+            function updateProgressBar() {
+                const progress = ((currentWordIndex + 1) / words.length) * 100;
+                progressBar.style.width = `${progress}%`;
+            }
+            
+            function updateScoreDisplay() {
+                scoreDisplay.textContent = score;
+                successCountDisplay.textContent = successCount;
+                failureCountDisplay.textContent = failureCount;
+            }
+            
+      
